@@ -1,33 +1,14 @@
-<?php 
-		if (function_exists('conectar')){
+<?php
+$servername = "remotemysql.com";
+$username = "30ItOgenKE";
+$password = nF200xrDQl;
+$dbname = "30ItOgenKE";
 
-		} else {
+//Create connection
+$conn = mysqli_connect($servername, $username, $password, $dbname);
 
-		function conectar(){
-		   
-				//$connection = mysqli_connect("localhost", 'root', '', 'cl_water_sys');	
-
-				$user = getenv('CLOUDSQL_USER');
-				$pass = getenv('CLOUDSQL_PASSWORD');
-				$inst = getenv('CLOUDSQL_DSN');
-				$db = getenv('CLOUDSQL_DB');
-				$connection = mysqli_connect(null, $user, $pass, $db, null, $inst);
-			/*	$now = new DateTime();
-				$mins = $now->getOffset() / 60;
-				$sgn = ($mins < 0 ? -1 : 1);
-				$mins = abs($mins);
-				$hrs = floor($mins / 60);
-				$mins -= $hrs * 60;
-				$offset = sprintf('%+d:%02d', $hrs*$sgn, $mins);
-				$connection->query("SET time_zone='$offset'");
-			    $connection->query("SET lc_time_names = 'es_ES'"); */
-				if (!$connection) {
-						echo "Error!".mysqli_connect_error();
-					}
-				
-				return $connection;
-		}
-		}
-
-		
+//Check connection
+if(!$conn){
+	die("Connection failed: ".mysqli_connect_error);
+}
 ?>
